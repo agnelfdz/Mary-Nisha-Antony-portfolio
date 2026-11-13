@@ -565,8 +565,8 @@ body.cursor-hover #cursor-ring {
 
 /* Compact Language Card with Small Edge Radius */
 .language-card-compact {
-  border-radius: 5px !important;
-  padding: 0.35rem 0.55rem !important;
+  border-radius: 8px !important;
+  padding: 0.55rem 0.75rem !important;
   background: rgba(15, 26, 54, 0.72) !important;
   border: 1px solid rgba(148, 163, 184, 0.16) !important;
   transition: all 0.25s ease !important;
@@ -579,15 +579,15 @@ body.cursor-hover #cursor-ring {
   transform: translateY(-1px);
 }
 
-/* Perfect Beveled Rectangle Columns for CEFR Competencies (Micro & Sleek) */
+/* Perfect Beveled Rectangle Columns for CEFR Competencies (Balanced & Refined) */
 .beveled-col {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.15rem 0.12rem;
-  border-radius: 3px;
+  padding: 0.22rem 0.15rem;
+  border-radius: 4px;
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.22);
@@ -596,21 +596,36 @@ body.cursor-hover #cursor-ring {
   border-bottom: 1.5px solid rgba(0, 0, 0, 0.75);
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.08), inset -1px -1px 0 rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
-  min-height: 26px;
+  min-height: 28px;
 }
 
 @media (min-width: 640px) {
   .beveled-col {
     flex-direction: row;
-    gap: 0.22rem;
-    padding: 0.16rem 0.3rem;
-    min-height: 20px;
+    gap: 0.28rem;
+    padding: 0.22rem 0.35rem;
+    min-height: 24px;
   }
 }
 
 .beveled-col:hover {
   transform: translateY(-1px);
   filter: brightness(1.15);
+}
+
+.beveled-col-emerald {
+  border-color: rgba(16, 185, 129, 0.25);
+  border-top: 1px solid rgba(52, 211, 153, 0.5);
+  border-left: 1px solid rgba(16, 185, 129, 0.3);
+  border-bottom: 1.5px solid rgba(6, 78, 59, 0.85);
+  border-right: 1px solid rgba(6, 78, 59, 0.55);
+  box-shadow: inset 1px 1px 0 rgba(16, 185, 129, 0.18), inset -1px -1px 0 rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.beveled-col-emerald:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  border-top-color: #34d399;
+  box-shadow: inset 1px 1px 0 rgba(16, 185, 129, 0.3), 0 0 10px rgba(16, 185, 129, 0.25);
 }
 
 .beveled-col-sky {
@@ -644,7 +659,7 @@ body.cursor-hover #cursor-ring {
 }
 
 .beveled-col-label {
-  font-size: 8.5px;
+  font-size: 9px;
   color: #cbd5e1;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -652,7 +667,7 @@ body.cursor-hover #cursor-ring {
 }
 
 .beveled-col-score {
-  font-size: 9px;
+  font-size: 9.5px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 700;
   letter-spacing: 0.02em;
