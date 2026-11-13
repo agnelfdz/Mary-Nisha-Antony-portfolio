@@ -38,17 +38,7 @@ A modern digital portfolio website designed and developed for **Mary Nisha Anton
    - Interactive Quick Stats: 2+ Years at Fedserv, 100% Audit Accuracy, 2 Economics Degrees, 3 Languages.
    - One-click actions: "Explore Portfolio", "Download Resume", and "Quick View" modal.
 
-4. **Technical Skills & Software Hub**:
-   - Dedicated Software Mastery section spotlighting:
-     - **Tally**: Strong Working Knowledge (Vouchers F4–F9, Ledger Accounts, Day Book, Cash/Bank Books, Trial Balance, Invoicing).
-     - **Microsoft Excel**: High Proficiency (Pivot Tables, VLOOKUP, Conditional Formatting, Financial MIS Schedules).
-     - **Microsoft Word**: High Proficiency (Formal Documentation, Financial Notes, Executive Memos).
-     - **Microsoft PowerPoint**: High Proficiency (Data Visualization, Financial Presentations, Review Slides).
-     - **Accounting Operations**: Practical Expertise (AP/AR, Bank Reconciliation, Petty Cash, Journal Entries).
-     - **Financial Documentation & Record Management**: High Precision & Archiving Hygiene.
-   - Interactive category filter tabs (Software, Office Suite, Operations, Analytical).
-
-5. **Interactive Background & Micro-Interactions**:
+4. **Interactive Background & Micro-Interactions**:
    - High-performance HTML5 Canvas particle constellation with animated floating software badges for Microsoft Excel, PowerPoint, Word, Tally ERP, and formulas.
    - Mouse-responsive magnetic movement with zero performance lag.
    - 3D card tilt on desktop.
@@ -56,12 +46,12 @@ A modern digital portfolio website designed and developed for **Mary Nisha Anton
    - Back-to-top floating button with circular SVG scroll progress indicator.
    - Full support for `prefers-reduced-motion` accessibility.
 
-6. **Functional Contact & Direct Communication**:
+5. **Functional Contact & Direct Communication**:
    - One-click "Copy Email" and "Copy Phone" buttons with animated toast feedback.
    - Interactive contact form with real-time field validation and character counters.
    - Automatic `mailto:` dispatcher pre-filling the user's message for instant email delivery.
 
-7. **Functional Resume Integration**:
+6. **Functional Resume Integration**:
    - The actual `MARY NISHA ANTONY.pdf` is directly downloadable via the primary hero CTA, navbar, and contact section.
    - Zero-dependency inline layout where all details are directly readable on the page without blocking iframes or external viewers.
 
