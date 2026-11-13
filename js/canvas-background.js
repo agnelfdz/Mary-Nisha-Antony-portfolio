@@ -15,6 +15,7 @@
     let width, height;
     let particles = [];
     let softwareElements = [];
+    let snowflakes = [];
     let orbs = [];
     let mouse = { x: -1000, y: -1000, radius: 140 };
     let animationFrameId;
@@ -222,6 +223,58 @@
       }
     }
 
+    class Snowflake {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(init = false) {
+        this.x = Math.random() * (width || window.innerWidth || 1200);
+        this.y = init ? Math.random() * (height || window.innerHeight || 800) : -12;
+        this.radius = Math.random() * 1.6 + 0.8; // Small delicate snowflake (0.8px to 2.4px)
+        this.vy = Math.random() * 0.65 + 0.35;   // Gentle downward drift
+        this.vx = (Math.random() - 0.5) * 0.25;  // Subtle horizontal breeze
+        this.alpha = Math.random() * 0.45 + 0.35; // Soft translucent white
+        this.swaySpeed = Math.random() * 0.02 + 0.008;
+        this.swayDist = Math.random() * 1.1 + 0.5;
+        this.phase = Math.random() * Math.PI * 2;
+      }
+
+      update() {
+        if (isReducedMotion) return;
+
+        this.phase += this.swaySpeed;
+        this.x += this.vx + Math.sin(this.phase) * this.swayDist * 0.4;
+        this.y += this.vy;
+
+        // Wrap around bottom
+        if (this.y > (height || 800) + 12) {
+          this.reset(false);
+        }
+        // Wrap horizontally
+        if (this.x < -12) this.x = (width || 1200) + 12;
+        if (this.x > (width || 1200) + 12) this.x = -12;
+
+        // Subtle mouse interaction
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 70) {
+          const force = (70 - dist) / 70;
+          const angle = Math.atan2(dy, dx);
+          this.x -= Math.cos(angle) * force * 1.3;
+          this.y -= Math.sin(angle) * force * 1.3;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
     function resize() {
       width = canvas.width = window.innerWidth || document.documentElement.clientWidth || 1200;
       height = canvas.height = window.innerHeight || document.documentElement.clientHeight || 800;
@@ -240,6 +293,12 @@
       const badgeCount = width < 768 ? 6 : 14;
       for (let i = 0; i < badgeCount; i++) {
         softwareElements.push(new SoftwareFloatingBadge(SOFTWARE_ITEMS[i % SOFTWARE_ITEMS.length], i));
+      }
+
+      snowflakes = [];
+      const snowCount = width < 768 ? 40 : 85;
+      for (let i = 0; i < snowCount; i++) {
+        snowflakes.push(new Snowflake());
       }
 
       orbs = [
@@ -279,6 +338,12 @@
       for (let i = 0; i < orbs.length; i++) {
         orbs[i].update();
         orbs[i].draw();
+      }
+
+      // Gentle Snow Falling across Entire Background
+      for (let i = 0; i < snowflakes.length; i++) {
+        snowflakes[i].update();
+        snowflakes[i].draw();
       }
 
       // Constellation Lines
