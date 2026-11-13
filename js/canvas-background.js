@@ -94,33 +94,57 @@
         const h = this.height;
         const r = 8;
 
-        // Draw rounded badge background
+        // Realistic Frosted Glass Token Shadow
+        ctx.shadowColor = this.data.glow;
+        ctx.shadowBlur = 12;
+        ctx.shadowOffsetY = 3;
+
+        // Glass background with realistic depth gradient
+        const bgGrad = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+        bgGrad.addColorStop(0, 'rgba(30, 41, 59, 0.85)');
+        bgGrad.addColorStop(1, 'rgba(15, 23, 42, 0.92)');
+
         ctx.beginPath();
         ctx.roundRect(-w / 2, -h / 2, w, h, r);
-        ctx.fillStyle = this.data.bg;
+        ctx.fillStyle = bgGrad;
         ctx.fill();
 
-        ctx.strokeStyle = `${this.data.color}${this.alpha * 0.7})`;
+        // Reset shadow for crisp borders
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetY = 0;
+
+        // Glass border with subtle color tint
+        ctx.strokeStyle = `${this.data.color}${this.alpha * 0.85})`;
         ctx.lineWidth = 1;
         ctx.stroke();
 
-        // Icon Pill on Left
+        // Top specular reflection highlight
         ctx.beginPath();
-        ctx.roundRect(-w / 2 + 5, -h / 2 + 5, 28, h - 10, 5);
-        ctx.fillStyle = `${this.data.color}0.25)`;
+        ctx.roundRect(-w / 2 + 2, -h / 2 + 1, w - 4, 1.5, 1);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
         ctx.fill();
+
+        // Icon Pill on Left with soft glow
+        ctx.beginPath();
+        ctx.roundRect(-w / 2 + 6, -h / 2 + 6, 28, h - 12, 5);
+        ctx.fillStyle = `${this.data.color}0.35)`;
+        ctx.fill();
+        ctx.strokeStyle = `${this.data.color}0.75)`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
 
         ctx.font = `bold 10px 'JetBrains Mono', monospace`;
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(this.data.symbol, -w / 2 + 19, 0);
+        ctx.fillText(this.data.symbol, -w / 2 + 20, 0);
 
         // Subtext / Feature on Right
-        ctx.font = `500 10px 'Plus Jakarta Sans', sans-serif`;
-        ctx.fillStyle = `${this.data.color}0.9)`;
+        ctx.font = `600 10px 'Plus Jakarta Sans', sans-serif`;
+        ctx.fillStyle = '#f1f5f9';
         ctx.textAlign = 'left';
-        ctx.fillText(this.data.sub, -w / 2 + 38, 0);
+        ctx.fillText(this.data.sub, -w / 2 + 39, 0);
 
         ctx.restore();
       }
@@ -223,6 +247,7 @@
       }
     }
 
+    let windTime = 0;
     class Snowflake {
       constructor() {
         this.reset(true);
@@ -230,47 +255,83 @@
 
       reset(init = false) {
         this.x = Math.random() * (width || window.innerWidth || 1200);
-        this.y = init ? Math.random() * (height || window.innerHeight || 800) : -12;
-        this.radius = Math.random() * 1.6 + 0.8; // Small delicate snowflake (0.8px to 2.4px)
-        this.vy = Math.random() * 0.65 + 0.35;   // Gentle downward drift
-        this.vx = (Math.random() - 0.5) * 0.25;  // Subtle horizontal breeze
-        this.alpha = Math.random() * 0.45 + 0.35; // Soft translucent white
-        this.swaySpeed = Math.random() * 0.02 + 0.008;
-        this.swayDist = Math.random() * 1.1 + 0.5;
+        this.y = init ? Math.random() * (height || window.innerHeight || 800) : -15;
+
+        // 3 realistic depth layers: 0 (background), 1 (midground), 2 (foreground bokeh)
+        const depth = Math.random();
+        if (depth < 0.55) {
+          // Distant fine snow
+          this.layer = 0;
+          this.radius = Math.random() * 0.7 + 0.6;
+          this.vy = Math.random() * 0.35 + 0.25;
+          this.alpha = Math.random() * 0.3 + 0.2;
+          this.swayDist = Math.random() * 0.6 + 0.3;
+        } else if (depth < 0.88) {
+          // Midground crisp flakes
+          this.layer = 1;
+          this.radius = Math.random() * 1.1 + 1.1;
+          this.vy = Math.random() * 0.55 + 0.4;
+          this.alpha = Math.random() * 0.35 + 0.45;
+          this.swayDist = Math.random() * 1.2 + 0.7;
+        } else {
+          // Foreground bokeh snowflakes with soft radial aura
+          this.layer = 2;
+          this.radius = Math.random() * 1.8 + 2.4;
+          this.vy = Math.random() * 0.85 + 0.65;
+          this.alpha = Math.random() * 0.3 + 0.35;
+          this.swayDist = Math.random() * 1.8 + 1.2;
+        }
+
+        this.vx = (Math.random() - 0.5) * 0.2;
+        this.swaySpeed = Math.random() * 0.018 + 0.008;
         this.phase = Math.random() * Math.PI * 2;
+        this.twinklePhase = Math.random() * Math.PI * 2;
+        this.twinkleSpeed = Math.random() * 0.03 + 0.01;
       }
 
-      update() {
+      update(globalWind = 0) {
         if (isReducedMotion) return;
 
         this.phase += this.swaySpeed;
-        this.x += this.vx + Math.sin(this.phase) * this.swayDist * 0.4;
+        this.twinklePhase += this.twinkleSpeed;
+        this.x += this.vx + Math.sin(this.phase) * this.swayDist * 0.45 + globalWind * (this.layer + 1) * 0.35;
         this.y += this.vy;
 
         // Wrap around bottom
-        if (this.y > (height || 800) + 12) {
+        if (this.y > (height || 800) + 15) {
           this.reset(false);
         }
         // Wrap horizontally
-        if (this.x < -12) this.x = (width || 1200) + 12;
-        if (this.x > (width || 1200) + 12) this.x = -12;
+        if (this.x < -20) this.x = (width || 1200) + 20;
+        if (this.x > (width || 1200) + 20) this.x = -20;
 
         // Subtle mouse interaction
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 70) {
-          const force = (70 - dist) / 70;
+        if (dist < 80) {
+          const force = (80 - dist) / 80;
           const angle = Math.atan2(dy, dx);
-          this.x -= Math.cos(angle) * force * 1.3;
-          this.y -= Math.sin(angle) * force * 1.3;
+          this.x -= Math.cos(angle) * force * 1.5;
+          this.y -= Math.sin(angle) * force * 1.5;
         }
       }
 
       draw() {
+        const currentAlpha = Math.max(0.12, Math.min(0.9, this.alpha + Math.sin(this.twinklePhase) * 0.12));
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+
+        if (this.layer === 2) {
+          // Soft Bokeh Glow for Foreground Snowflakes
+          const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 1.6);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${currentAlpha})`);
+          grad.addColorStop(0.5, `rgba(224, 242, 254, ${currentAlpha * 0.5})`);
+          grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          ctx.fillStyle = grad;
+        } else {
+          ctx.fillStyle = `rgba(240, 249, 255, ${currentAlpha})`;
+        }
         ctx.fill();
       }
     }
@@ -340,9 +401,13 @@
         orbs[i].draw();
       }
 
-      // Gentle Snow Falling across Entire Background
+      // Organic Oscillating Wind Breeze for Snow Simulation
+      windTime += 0.012;
+      const globalWind = Math.sin(windTime) * 0.45;
+
+      // Realistic 3-Layer Depth-of-Field Snow Simulation
       for (let i = 0; i < snowflakes.length; i++) {
-        snowflakes[i].update();
+        snowflakes[i].update(globalWind);
         snowflakes[i].draw();
       }
 
