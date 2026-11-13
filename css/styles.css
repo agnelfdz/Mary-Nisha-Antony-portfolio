@@ -88,9 +88,12 @@ body {
   pointer-events: none !important;
 }
 
+/* Ambient Mesh Glows (Rich, Vibrant & Multi-Colored) */
 .ambient-glow-1,
 .ambient-glow-2,
-.ambient-glow-3 {
+.ambient-glow-3,
+.ambient-glow-4,
+.ambient-glow-5 {
   position: absolute;
   pointer-events: none !important;
   z-index: 0;
@@ -98,34 +101,108 @@ body {
 }
 
 .ambient-glow-1 {
-  top: -100px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 500px;
-  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.16) 0%, rgba(124, 58, 237, 0.1) 45%, transparent 70%);
-  filter: blur(80px);
+  width: 950px;
+  height: 520px;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.22) 0%, rgba(124, 58, 237, 0.16) 45%, rgba(56, 189, 248, 0.08) 70%, transparent 85%);
+  filter: blur(85px);
 }
 
 .ambient-glow-2 {
-  top: 1300px;
-  right: -150px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 65%);
-  filter: blur(90px);
+  top: 950px;
+  right: -120px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(34, 197, 94, 0.08) 40%, transparent 70%);
+  filter: blur(95px);
 }
 
 .ambient-glow-3 {
   bottom: 800px;
-  left: -150px;
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 65%);
+  left: -140px;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.14) 0%, rgba(249, 115, 22, 0.08) 45%, transparent 70%);
   filter: blur(100px);
 }
 
-/* Cursor Glow Dot */
+.ambient-glow-4 {
+  top: 1800px;
+  left: 10%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 70%);
+  filter: blur(90px);
+}
+
+.ambient-glow-5 {
+  bottom: 200px;
+  right: 5%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(16, 185, 129, 0.07) 45%, transparent 70%);
+  filter: blur(95px);
+}
+
+/* Precision Interactive Cursor Point & Ring Follower */
+#cursor-point {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #38bdf8;
+  background: linear-gradient(135deg, #38bdf8, #22c55e, #c084fc);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.95), 0 0 18px rgba(34, 197, 94, 0.7);
+  pointer-events: none !important;
+  z-index: 99999;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.25s ease, transform 0.06s linear, background 0.3s ease;
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  margin-left: -16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25), inset 0 0 10px rgba(168, 85, 247, 0.18);
+  pointer-events: none !important;
+  z-index: 99998;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.25s ease, width 0.22s cubic-bezier(0.2, 0, 0.2, 1), height 0.22s cubic-bezier(0.2, 0, 0.2, 1), margin 0.22s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.22s ease, background-color 0.22s ease;
+  will-change: transform;
+}
+
+body.cursor-hover #cursor-point {
+  transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) scale(1.5);
+  background: linear-gradient(135deg, #22c55e, #fbbf24);
+  box-shadow: 0 0 14px rgba(34, 197, 94, 1);
+}
+
+body.cursor-hover #cursor-ring {
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  margin-left: -24px;
+  border-color: rgba(34, 197, 94, 0.85);
+  background-color: rgba(34, 197, 94, 0.1);
+  box-shadow: 0 0 22px rgba(34, 197, 94, 0.35);
+}
+
+/* Ambient Cursor Glow Halo */
 #cursor-glow {
   position: fixed;
   top: 0;
@@ -135,14 +212,22 @@ body {
   margin-top: -130px;
   margin-left: -130px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, rgba(56, 189, 248, 0.05) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(56, 189, 248, 0.08) 40%, transparent 70%);
   pointer-events: none !important;
   z-index: 999;
   opacity: 0;
   transition: opacity 0.3s ease;
+  will-change: transform;
 }
 
-/* FLOATING SOFTWARE BACKGROUND BADGES (HTML/CSS LAYER) */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  #cursor-point,
+  #cursor-ring {
+    display: none !important;
+  }
+}
+
+/* FLOATING SOFTWARE BACKGROUND BADGES & EXCEL PREVIEWS (HTML/CSS LAYER) */
 .software-bg-layer {
   position: fixed;
   inset: 0;
@@ -158,73 +243,245 @@ body {
   gap: 0.6rem;
   padding: 0.5rem 0.95rem;
   border-radius: 9999px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   font-size: 0.75rem;
   font-weight: 600;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   pointer-events: none !important;
-  opacity: 0.45;
+  opacity: 0.62;
   transition: opacity 0.3s ease;
 }
 
-/* Excel Badge (Green) */
-.pill-excel-1 {
-  top: 18%;
-  left: 4%;
-  background: rgba(6, 78, 59, 0.45);
-  border: 1px solid rgba(34, 197, 94, 0.4);
+.pill-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Mini Floating Excel Spreadsheet Card */
+.floating-software-card {
+  position: absolute;
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(6, 78, 59, 0.52);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 25px rgba(34, 197, 94, 0.25);
+  pointer-events: none !important;
+  opacity: 0.7;
+  padding: 0.65rem 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.28);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   color: #86efac;
-  animation: floatSlow 7s ease-in-out infinite alternate;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+.sheet-status {
+  font-size: 0.62rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.25);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.sheet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: 3px 6px;
+}
+
+.sheet-cell {
+  color: #cbd5e1;
+  font-size: 0.64rem;
+  white-space: nowrap;
+}
+
+.header-cell {
+  color: #86efac;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+  padding-bottom: 2px;
+}
+
+.num-cell {
+  color: #fde047;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Individual Floating Elements: Positions, Colors & Animations */
+/* Excel Badges (Green / Emerald) */
+.pill-excel-1 {
+  top: 15%;
+  left: 3%;
+  background: rgba(6, 78, 59, 0.55);
+  border: 1px solid rgba(34, 197, 94, 0.48);
+  color: #86efac;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(34, 197, 94, 0.25);
+  animation: floatSlow 7.5s ease-in-out infinite alternate;
 }
 
 .pill-excel-2 {
-  bottom: 25%;
-  right: 5%;
-  background: rgba(6, 78, 59, 0.45);
-  border: 1px solid rgba(34, 197, 94, 0.4);
+  bottom: 24%;
+  right: 4%;
+  background: rgba(6, 78, 59, 0.55);
+  border: 1px solid rgba(34, 197, 94, 0.48);
   color: #86efac;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(34, 197, 94, 0.25);
+  animation: floatReverse 8.5s ease-in-out infinite alternate;
+}
+
+.pill-excel-3 {
+  top: 58%;
+  right: 5%;
+  background: rgba(6, 78, 59, 0.5);
+  border: 1px solid rgba(52, 211, 153, 0.48);
+  color: #a7f3d0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(16, 185, 129, 0.25);
+  animation: floatDiagonal 9.5s ease-in-out infinite alternate;
+}
+
+.pill-excel-4 {
+  top: 40%;
+  left: 4%;
+  background: rgba(6, 78, 59, 0.5);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  color: #86efac;
+  animation: floatSlow 10s ease-in-out infinite alternate;
+}
+
+.pill-excel-5 {
+  bottom: 12%;
+  right: 16%;
+  background: rgba(6, 78, 59, 0.52);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  color: #86efac;
+  animation: floatReverse 7.2s ease-in-out infinite alternate;
+}
+
+.pill-excel-sheet {
+  top: 74%;
+  left: 2%;
+  animation: floatWave 11s ease-in-out infinite alternate;
+}
+
+/* Word Badges (Blue) */
+.pill-word-1 {
+  top: 27%;
+  right: 4%;
+  background: rgba(30, 58, 138, 0.55);
+  border: 1px solid rgba(59, 130, 246, 0.48);
+  color: #93c5fd;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(59, 130, 246, 0.25);
   animation: floatReverse 8s ease-in-out infinite alternate;
 }
 
-/* Word Badge (Blue) */
-.pill-word-1 {
-  top: 32%;
-  right: 6%;
-  background: rgba(30, 58, 138, 0.45);
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  color: #93c5fd;
-  animation: floatReverse 7.5s ease-in-out infinite alternate;
-}
-
-/* PowerPoint Badge (Orange) */
-.pill-ppt-1 {
-  bottom: 15%;
-  left: 6%;
-  background: rgba(124, 45, 18, 0.45);
-  border: 1px solid rgba(249, 115, 22, 0.4);
-  color: #fdba74;
-  animation: floatSlow 8.5s ease-in-out infinite alternate;
-}
-
-/* Tally Badge (Gold) */
-.pill-tally-1 {
-  top: 55%;
+.pill-word-2 {
+  bottom: 38%;
   left: 3%;
-  background: rgba(120, 53, 15, 0.45);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(30, 58, 138, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #bae6fd;
+  animation: floatSlow 9s ease-in-out infinite alternate;
+}
+
+/* PowerPoint Badges (Orange / Coral) */
+.pill-ppt-1 {
+  bottom: 16%;
+  left: 5%;
+  background: rgba(124, 45, 18, 0.55);
+  border: 1px solid rgba(249, 115, 22, 0.48);
+  color: #fdba74;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(249, 115, 22, 0.25);
+  animation: floatSlow 9s ease-in-out infinite alternate;
+}
+
+.pill-ppt-2 {
+  top: 48%;
+  right: 3%;
+  background: rgba(124, 45, 18, 0.5);
+  border: 1px solid rgba(251, 146, 60, 0.45);
+  color: #fed7aa;
+  animation: floatWave 8.2s ease-in-out infinite alternate;
+}
+
+/* Tally Badges (Amber / Gold) */
+.pill-tally-1 {
+  top: 86%;
+  right: 6%;
+  background: rgba(120, 53, 15, 0.55);
+  border: 1px solid rgba(245, 158, 11, 0.48);
   color: #fde047;
-  animation: floatSlow 6.5s ease-in-out infinite alternate;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(245, 158, 11, 0.25);
+  animation: floatSlow 7s ease-in-out infinite alternate;
+}
+
+.pill-tally-2 {
+  top: 34%;
+  left: 12%;
+  background: rgba(120, 53, 15, 0.5);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  color: #fef08a;
+  animation: floatDiagonal 10.5s ease-in-out infinite alternate;
+}
+
+/* Financial Accuracy Metric Pill (Lavender / Purple) */
+.pill-finance-1 {
+  bottom: 6%;
+  left: 30%;
+  background: rgba(88, 28, 135, 0.55);
+  border: 1px solid rgba(192, 132, 252, 0.48);
+  color: #e9d5ff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px rgba(168, 85, 247, 0.25);
+  animation: floatReverse 8.8s ease-in-out infinite alternate;
 }
 
 @keyframes floatSlow {
   0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-22px) rotate(2deg); }
+  100% { transform: translateY(-24px) rotate(2deg); }
 }
 
 @keyframes floatReverse {
   0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(22px) rotate(-2deg); }
+  100% { transform: translateY(24px) rotate(-2deg); }
+}
+
+@keyframes floatDiagonal {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(16px, -22px) rotate(1.8deg); }
+}
+
+@keyframes floatWave {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-10px, -15px) rotate(-1.5deg); }
+  100% { transform: translate(12px, -24px) rotate(2deg); }
+}
+
+@media (max-width: 768px) {
+  .pill-excel-3,
+  .pill-excel-4,
+  .pill-excel-5,
+  .pill-excel-sheet,
+  .pill-word-2,
+  .pill-ppt-2,
+  .pill-tally-2,
+  .pill-finance-1 {
+    display: none !important;
+  }
 }
 
 /* Modals */
@@ -289,6 +546,37 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-text-animated {
+  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 25%, #34d399 50%, #c084fc 75%, #fbbf24 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shineGradient 6s linear infinite;
+}
+
+@keyframes shineGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Compact Language Card with Small Edge Radius */
+.language-card-compact {
+  border-radius: 8px !important;
+  padding: 0.65rem 0.85rem !important;
+  background: rgba(15, 26, 54, 0.72) !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  transition: all 0.25s ease !important;
+}
+
+.language-card-compact:hover {
+  background: rgba(22, 38, 77, 0.9) !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 8px 24px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2) !important;
+  transform: translateY(-2px);
 }
 
 /* Glassmorphism Cards */

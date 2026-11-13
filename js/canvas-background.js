@@ -22,12 +22,18 @@
 
     // Software icon badges configuration
     const SOFTWARE_ITEMS = [
-      { name: 'Excel', symbol: 'XLS', sub: '=SUM()', color: 'rgba(34, 197, 94, ', glow: '#22c55e', bg: 'rgba(20, 83, 45, 0.4)' },
-      { name: 'Word', symbol: 'DOC', sub: '¶ Format', color: 'rgba(59, 130, 246, ', glow: '#3b82f6', bg: 'rgba(30, 58, 138, 0.4)' },
-      { name: 'PowerPoint', symbol: 'PPT', sub: '📊 Slides', color: 'rgba(249, 115, 22, ', glow: '#f97316', bg: 'rgba(124, 45, 18, 0.4)' },
-      { name: 'Tally ERP', symbol: 'TALLY', sub: 'Accounts', color: 'rgba(245, 158, 11, ', glow: '#f59e0b', bg: 'rgba(120, 53, 15, 0.4)' },
-      { name: 'Excel Formulas', symbol: 'fx', sub: 'VLOOKUP', color: 'rgba(16, 185, 129, ', glow: '#10b981', bg: 'rgba(6, 78, 59, 0.4)' },
-      { name: 'MS Office', symbol: '365', sub: 'Suite', color: 'rgba(168, 85, 247, ', glow: '#a855f7', bg: 'rgba(88, 28, 135, 0.4)' }
+      { name: 'Excel', symbol: 'XLS', sub: '=VLOOKUP()', color: 'rgba(34, 197, 94, ', glow: '#22c55e', bg: 'rgba(20, 83, 45, 0.55)' },
+      { name: 'Word', symbol: 'DOC', sub: 'Audit Memos', color: 'rgba(59, 130, 246, ', glow: '#3b82f6', bg: 'rgba(30, 58, 138, 0.55)' },
+      { name: 'PowerPoint', symbol: 'PPT', sub: 'Finance Decks', color: 'rgba(249, 115, 22, ', glow: '#f97316', bg: 'rgba(124, 45, 18, 0.55)' },
+      { name: 'Tally ERP', symbol: 'TALLY', sub: 'Ledger Audit', color: 'rgba(245, 158, 11, ', glow: '#f59e0b', bg: 'rgba(120, 53, 15, 0.55)' },
+      { name: 'Excel Formulas', symbol: 'fx', sub: '=SUMIFS()', color: 'rgba(16, 185, 129, ', glow: '#10b981', bg: 'rgba(6, 78, 59, 0.55)' },
+      { name: 'Excel Pivot', symbol: 'PIVOT', sub: 'Reconciled ✓', color: 'rgba(52, 211, 153, ', glow: '#34d399', bg: 'rgba(6, 95, 70, 0.55)' },
+      { name: 'Excel XLOOKUP', symbol: 'XLS', sub: '=XLOOKUP()', color: 'rgba(34, 197, 94, ', glow: '#22c55e', bg: 'rgba(20, 83, 45, 0.55)' },
+      { name: 'MS Office 365', symbol: '365', sub: 'Finance Suite', color: 'rgba(168, 85, 247, ', glow: '#a855f7', bg: 'rgba(88, 28, 135, 0.55)' },
+      { name: 'PowerPoint Slides', symbol: 'PPT', sub: 'P&L Visuals 📈', color: 'rgba(251, 146, 60, ', glow: '#fb923c', bg: 'rgba(154, 52, 18, 0.55)' },
+      { name: 'Word Report', symbol: 'DOC', sub: 'SOP & Policies', color: 'rgba(96, 165, 250, ', glow: '#60a5fa', bg: 'rgba(29, 78, 216, 0.55)' },
+      { name: 'Tally Vouchers', symbol: 'TALLY', sub: 'Dr / Cr Books', color: 'rgba(251, 191, 36, ', glow: '#fbbf24', bg: 'rgba(146, 64, 14, 0.55)' },
+      { name: 'Excel Logic', symbol: 'IF', sub: 'Variance Check', color: 'rgba(16, 185, 129, ', glow: '#10b981', bg: 'rgba(6, 78, 59, 0.55)' }
     ];
 
     class SoftwareFloatingBadge {
@@ -40,11 +46,11 @@
       reset(init = false) {
         this.x = Math.random() * (width || window.innerWidth || 1200);
         this.y = init ? Math.random() * (height || window.innerHeight || 800) : (height || 800) + 40;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = -(Math.random() * 0.35 + 0.15); // float upward slowly
-        this.width = 95;
+        this.vx = (Math.random() - 0.5) * 0.45;
+        this.vy = -(Math.random() * 0.38 + 0.18); // float upward slowly
+        this.width = 100;
         this.height = 38;
-        this.alpha = Math.random() * 0.4 + 0.25;
+        this.alpha = Math.random() * 0.35 + 0.4;
         this.angle = (Math.random() - 0.5) * 0.15;
         this.rotationSpeed = (Math.random() - 0.5) * 0.002;
         this.floatPhase = Math.random() * Math.PI * 2;
@@ -225,22 +231,23 @@
 
     function initElements() {
       particles = [];
-      const particleCount = width < 768 ? 20 : 45;
+      const particleCount = width < 768 ? 26 : 55;
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
 
       softwareElements = [];
-      const badgeCount = width < 768 ? 4 : SOFTWARE_ITEMS.length;
+      const badgeCount = width < 768 ? 6 : 14;
       for (let i = 0; i < badgeCount; i++) {
         softwareElements.push(new SoftwareFloatingBadge(SOFTWARE_ITEMS[i % SOFTWARE_ITEMS.length], i));
       }
 
       orbs = [
-        new GlowingOrb(width * 0.15, height * 0.2, 220, 'rgba(34, 197, 94, 0.06)'), // Excel Green Orb
-        new GlowingOrb(width * 0.85, height * 0.3, 240, 'rgba(59, 130, 246, 0.07)'), // Word Blue Orb
-        new GlowingOrb(width * 0.75, height * 0.75, 230, 'rgba(249, 115, 22, 0.05)'), // PowerPoint Orange Orb
-        new GlowingOrb(width * 0.25, height * 0.8, 260, 'rgba(245, 158, 11, 0.05)')   // Tally Gold Orb
+        new GlowingOrb(width * 0.15, height * 0.2, 240, 'rgba(34, 197, 94, 0.10)'), // Excel Green Orb
+        new GlowingOrb(width * 0.85, height * 0.28, 260, 'rgba(59, 130, 246, 0.10)'), // Word Blue Orb
+        new GlowingOrb(width * 0.75, height * 0.75, 250, 'rgba(249, 115, 22, 0.08)'), // PowerPoint Orange Orb
+        new GlowingOrb(width * 0.22, height * 0.82, 270, 'rgba(245, 158, 11, 0.08)'), // Tally Gold Orb
+        new GlowingOrb(width * 0.5, height * 0.5, 280, 'rgba(168, 85, 247, 0.09)')   // Royal Purple Center Orb
       ];
     }
 

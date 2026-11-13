@@ -139,36 +139,96 @@
   <!-- Interactive Canvas Background (Floating Software & Constellation Particles) -->
   <canvas id="bg-canvas" style="position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none !important; z-index: 0;"></canvas>
 
-  <!-- Ambient Glow Blobs -->
+  <!-- Ambient Multi-Color Mesh Glow Blobs -->
   <div class="ambient-glow-1" style="pointer-events: none !important;"></div>
   <div class="ambient-glow-2" style="pointer-events: none !important;"></div>
   <div class="ambient-glow-3" style="pointer-events: none !important;"></div>
+  <div class="ambient-glow-4" style="pointer-events: none !important;"></div>
+  <div class="ambient-glow-5" style="pointer-events: none !important;"></div>
 
-  <!-- Floating Animated Software Badges (Excel, Word, PowerPoint, Tally) in Background -->
+  <!-- Floating Animated Software Badges & Live Excel Sheets in Background -->
   <div class="software-bg-layer" aria-hidden="true">
+    <!-- Excel Badges (Emerald / Green) -->
     <div class="floating-software-pill pill-excel-1">
-      <span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:#22c55e;"></span>
-      <span>Microsoft Excel • =SUMIFS(F5:F40)</span>
+      <span class="pill-dot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></span>
+      <span>Microsoft Excel • =VLOOKUP("Tax", A2:D50, 4, 0)</span>
     </div>
     <div class="floating-software-pill pill-excel-2">
-      <span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:#22c55e;"></span>
+      <span class="pill-dot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></span>
       <span>Excel • Pivot Table Reconciled ✓</span>
     </div>
+    <div class="floating-software-pill pill-excel-3">
+      <span class="pill-dot" style="background:#34d399; box-shadow:0 0 8px #34d399;"></span>
+      <span>MS Excel • =SUMIFS(F2:F50, C2:C50, "Fedserv")</span>
+    </div>
+    <div class="floating-software-pill pill-excel-4">
+      <span class="pill-dot" style="background:#10b981; box-shadow:0 0 8px #10b981;"></span>
+      <span>Excel • XLOOKUP & Conditional Formatting ⚡</span>
+    </div>
+    <div class="floating-software-pill pill-excel-5">
+      <span class="pill-dot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></span>
+      <span>Excel • =IF(Variance=0, "BALANCED ✓", "REVIEW")</span>
+    </div>
+
+    <!-- Mini Floating Live Excel Spreadsheet Card -->
+    <div class="floating-software-card pill-excel-sheet">
+      <div class="sheet-header">
+        <span>📗 Excel • Fedserv_Ledger.xlsx</span>
+        <span class="sheet-status">Auto-Reconciled</span>
+      </div>
+      <div class="sheet-grid">
+        <div class="sheet-cell header-cell">Voucher</div>
+        <div class="sheet-cell header-cell">Account Head</div>
+        <div class="sheet-cell header-cell">Debit (₹)</div>
+        <div class="sheet-cell">VR-1042</div>
+        <div class="sheet-cell">Vendor Payable</div>
+        <div class="sheet-cell num-cell">42,500.00</div>
+        <div class="sheet-cell">VR-1043</div>
+        <div class="sheet-cell">Bank Recon</div>
+        <div class="sheet-cell num-cell">1,18,200.00</div>
+      </div>
+    </div>
+
+    <!-- Word Badges (Blue) -->
     <div class="floating-software-pill pill-word-1">
-      <span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:#3b82f6;"></span>
+      <span class="pill-dot" style="background:#3b82f6; box-shadow:0 0 8px #3b82f6;"></span>
       <span>Microsoft Word • Financial Documentation</span>
     </div>
+    <div class="floating-software-pill pill-word-2">
+      <span class="pill-dot" style="background:#38bdf8; box-shadow:0 0 8px #38bdf8;"></span>
+      <span>Word • Internal Audit & Compliance Memos ¶</span>
+    </div>
+
+    <!-- PowerPoint Badges (Orange / Coral) -->
     <div class="floating-software-pill pill-ppt-1">
-      <span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:#f97316;"></span>
+      <span class="pill-dot" style="background:#f97316; box-shadow:0 0 8px #f97316;"></span>
       <span>PowerPoint • Financial Presentation Decks</span>
     </div>
+    <div class="floating-software-pill pill-ppt-2">
+      <span class="pill-dot" style="background:#fb923c; box-shadow:0 0 8px #fb923c;"></span>
+      <span>MS PowerPoint • Executive Slide Visuals 📊</span>
+    </div>
+
+    <!-- Tally ERP Badges (Amber / Gold) -->
     <div class="floating-software-pill pill-tally-1">
-      <span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:#f59e0b;"></span>
-      <span>Tally ERP • General Ledger Dr / Cr</span>
+      <span class="pill-dot" style="background:#f59e0b; box-shadow:0 0 8px #f59e0b;"></span>
+      <span>Tally ERP 9 • General Ledger Dr / Cr</span>
+    </div>
+    <div class="floating-software-pill pill-tally-2">
+      <span class="pill-dot" style="background:#fde047; box-shadow:0 0 8px #fde047;"></span>
+      <span>Tally • Trial Balance & Daybook Audit ✓</span>
+    </div>
+
+    <!-- Corporate Finance Metric Pill (Lavender / Purple) -->
+    <div class="floating-software-pill pill-finance-1">
+      <span class="pill-dot" style="background:#c084fc; box-shadow:0 0 8px #c084fc;"></span>
+      <span>₹ Financial Accuracy • 100% Zero-Variance</span>
     </div>
   </div>
 
-  <!-- Custom Cursor Glow Dot -->
+  <!-- Precision Custom Cursor Point & Magnetic Follower Ring -->
+  <div id="cursor-point" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
   <div id="cursor-glow" style="pointer-events: none !important;" aria-hidden="true"></div>
 
   <!-- Toast Notification Container -->
@@ -305,7 +365,7 @@
             <!-- Name -->
             <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] mb-3" style="line-height: 1.12;">
               <span class="text-white">Hi, I'm</span><br>
-              <span class="gradient-text">Mary Nisha Antony</span>
+              <span class="gradient-text gradient-text-animated">Mary Nisha Antony</span>
             </h1>
 
             <!-- Professional Subtitle -->
@@ -407,7 +467,7 @@
         <!-- Quick Stats Row (Animated Numbers) -->
         <div id="hero-stats-row" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-6" style="border-top: 1px solid rgba(148, 163, 184, 0.15);">
           
-          <div class="stats-counter-card">
+          <div class="stats-counter-card" style="border-top: 2px solid #f59e0b; box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);">
             <div class="text-3xl sm:text-4xl font-display font-extrabold text-white mb-1">
               <span data-counter-target="2" data-counter-suffix="+">2+</span> <span class="text-base text-amber-400 font-sans font-semibold">Years</span>
             </div>
@@ -415,7 +475,7 @@
             <div class="text-[11px] text-slate-500 mt-1">Accounts Department</div>
           </div>
 
-          <div class="stats-counter-card">
+          <div class="stats-counter-card" style="border-top: 2px solid #10b981; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12);">
             <div class="text-3xl sm:text-4xl font-display font-extrabold text-emerald-400 mb-1">
               <span data-counter-target="100" data-counter-suffix="%">100%</span>
             </div>
@@ -423,7 +483,7 @@
             <div class="text-[11px] text-slate-500 mt-1">Zero-variance balancing</div>
           </div>
 
-          <div class="stats-counter-card">
+          <div class="stats-counter-card" style="border-top: 2px solid #a855f7; box-shadow: 0 8px 24px rgba(168, 85, 247, 0.12);">
             <div class="text-3xl sm:text-4xl font-display font-extrabold text-purple-400 mb-1">
               <span data-counter-target="2" data-counter-suffix="">2</span> <span class="text-base text-slate-300 font-sans font-semibold">Degrees</span>
             </div>
@@ -431,7 +491,7 @@
             <div class="text-[11px] text-slate-500 mt-1">M.A. & B.A. Economics</div>
           </div>
 
-          <div class="stats-counter-card">
+          <div class="stats-counter-card" style="border-top: 2px solid #38bdf8; box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);">
             <div class="text-3xl sm:text-4xl font-display font-extrabold text-sky-400 mb-1">
               <span data-counter-target="3" data-counter-suffix="">3</span> <span class="text-base text-slate-300 font-sans font-semibold">Languages</span>
             </div>
@@ -509,7 +569,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
                   
                   <!-- Card 1 -->
-                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-sky-500/40 transition-colors" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
+                  <div class="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-sky-500/40 transition-colors" style="background:rgba(15,23,42,0.7); border:1px solid rgba(56,189,248,0.25); border-top:2px solid #38bdf8; border-radius:8px;">
                     <div class="flex items-center gap-2 text-sky-400 font-semibold text-xs mb-2" style="color:#38bdf8;">
                       <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
                       <span>Tally Operations</span>
@@ -527,7 +587,7 @@
                   </div>
 
                   <!-- Card 2 -->
-                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-colors" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
+                  <div class="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-colors" style="background:rgba(15,23,42,0.7); border:1px solid rgba(16,185,129,0.25); border-top:2px solid #10b981; border-radius:8px;">
                     <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs mb-2" style="color:#34d399;">
                       <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                       <span>Excel MIS & Reporting</span>
@@ -545,7 +605,7 @@
                   </div>
 
                   <!-- Card 3 -->
-                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-colors" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
+                  <div class="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-colors" style="background:rgba(15,23,42,0.7); border:1px solid rgba(245,158,11,0.25); border-top:2px solid #f59e0b; border-radius:8px;">
                     <div class="flex items-center gap-2 text-amber-400 font-semibold text-xs mb-2" style="color:#fbbf24;">
                       <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                       <span>AP / AR Operations</span>
@@ -563,7 +623,7 @@
                   </div>
 
                   <!-- Card 4 -->
-                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-colors" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
+                  <div class="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-colors" style="background:rgba(15,23,42,0.7); border:1px solid rgba(192,132,252,0.25); border-top:2px solid #c084fc; border-radius:8px;">
                     <div class="flex items-center gap-2 text-purple-400 font-semibold text-xs mb-2" style="color:#c084fc;">
                       <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                       <span>Reconciliation & Audit</span>
@@ -883,90 +943,90 @@
               Official language competence ratings extracted directly from the resume.
             </p>
 
-            <div class="space-y-3" style="display:flex; flex-direction:column; gap:0.75rem;">
+            <div class="space-y-2.5" style="display:flex; flex-direction:column; gap:0.55rem;">
               
               <!-- English Card -->
-              <div class="glass-card p-3.5 sm:p-4">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="glass-card language-card-compact" style="border-radius: 8px !important; padding: 0.65rem 0.85rem !important;">
+                <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2">
                   <div class="flex items-center gap-2">
-                    <span class="font-display font-semibold text-white text-sm">English</span>
-                    <span class="glass-pill text-[10px] py-0.5 px-2" style="color:#38bdf8;">
+                    <span class="font-display font-semibold text-white text-xs sm:text-sm">English</span>
+                    <span class="glass-pill text-[10px] py-0.5 px-2" style="color:#38bdf8; border-radius: 5px;">
                       C1 Proficient
                     </span>
                   </div>
-                  <span class="text-[11px] text-slate-400">Fluent Corporate Working</span>
+                  <span class="text-[10px] sm:text-[11px] text-slate-400">Fluent Corporate Working</span>
                 </div>
-                <div class="grid grid-cols-5 gap-1.5 text-center">
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Listening</span>
-                    <strong class="text-sky-300 text-xs font-semibold">C1</strong>
+                <div class="grid grid-cols-5 gap-1 text-center">
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Listening</span>
+                    <strong class="text-sky-300 text-[11px] font-semibold">C1</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Reading</span>
-                    <strong class="text-sky-300 text-xs font-semibold">C1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Reading</span>
+                    <strong class="text-sky-300 text-[11px] font-semibold">C1</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Writing</span>
-                    <strong class="text-sky-300 text-xs font-semibold">C1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Writing</span>
+                    <strong class="text-sky-300 text-[11px] font-semibold">C1</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Speaking</span>
-                    <strong class="text-sky-300 text-xs font-semibold">C1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Speaking</span>
+                    <strong class="text-sky-300 text-[11px] font-semibold">C1</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Interaction</span>
-                    <strong class="text-sky-300 text-xs font-semibold">C1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Interaction</span>
+                    <strong class="text-sky-300 text-[11px] font-semibold">C1</strong>
                   </div>
                 </div>
               </div>
 
-              <!-- Malayalam Card -->
-              <div class="glass-card p-3.5 sm:p-4">
-                <div class="flex flex-wrap items-center justify-between gap-2">
+              <!-- Malayalam Card (Mother Tongue) -->
+              <div class="glass-card language-card-compact" style="border-radius: 8px !important; padding: 0.6rem 0.85rem !important;">
+                <div class="flex flex-wrap items-center justify-between gap-1.5">
                   <div class="flex items-center gap-2">
-                    <span class="font-display font-semibold text-white text-sm">Malayalam</span>
-                    <span class="glass-pill text-[10px] py-0.5 px-2" style="color:#34d399;">
+                    <span class="font-display font-semibold text-white text-xs sm:text-sm">Malayalam</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold" style="color:#34d399; background:rgba(16,185,129,0.18); border:1px solid rgba(16,185,129,0.35); border-radius: 5px;">
                       Mother Tongue
                     </span>
                   </div>
-                  <span class="text-[11px] text-slate-400">Native Fluency</span>
+                  <span class="text-[10px] sm:text-[11px] text-emerald-400 font-medium">Native Fluency</span>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
-                  Complete mastery across professional reading, writing, and verbal communication.
+                <p class="text-[10px] sm:text-[11px] text-slate-400 mt-1 leading-normal">
+                  Complete native mastery across professional writing, reading, and corporate verbal communication.
                 </p>
               </div>
 
               <!-- Hindi Card -->
-              <div class="glass-card p-3.5 sm:p-4">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <div class="glass-card language-card-compact" style="border-radius: 8px !important; padding: 0.65rem 0.85rem !important;">
+                <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2">
                   <div class="flex items-center gap-2">
-                    <span class="font-display font-semibold text-white text-sm">Hindi</span>
-                    <span class="glass-pill text-[10px] py-0.5 px-2" style="color:#c084fc;">
+                    <span class="font-display font-semibold text-white text-xs sm:text-sm">Hindi</span>
+                    <span class="glass-pill text-[10px] py-0.5 px-2" style="color:#c084fc; border-radius: 5px;">
                       B2 / B1 Independent
                     </span>
                   </div>
-                  <span class="text-[11px] text-slate-400">Independent Working</span>
+                  <span class="text-[10px] sm:text-[11px] text-slate-400">Independent Working</span>
                 </div>
-                <div class="grid grid-cols-5 gap-1.5 text-center">
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Listening</span>
-                    <strong class="text-purple-300 text-xs font-semibold">B2</strong>
+                <div class="grid grid-cols-5 gap-1 text-center">
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Listening</span>
+                    <strong class="text-purple-300 text-[11px] font-semibold">B2</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Reading</span>
-                    <strong class="text-purple-300 text-xs font-semibold">B2</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Reading</span>
+                    <strong class="text-purple-300 text-[11px] font-semibold">B2</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Writing</span>
-                    <strong class="text-purple-300 text-xs font-semibold">B2</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Writing</span>
+                    <strong class="text-purple-300 text-[11px] font-semibold">B2</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Speaking</span>
-                    <strong class="text-purple-300 text-xs font-semibold">B1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Speaking</span>
+                    <strong class="text-purple-300 text-[11px] font-semibold">B1</strong>
                   </div>
-                  <div class="py-1 px-1 rounded bg-slate-900/80 border border-slate-800">
-                    <span class="text-[9px] text-slate-400 block leading-tight">Interaction</span>
-                    <strong class="text-purple-300 text-xs font-semibold">B1</strong>
+                  <div class="py-1 px-0.5 bg-slate-900/80 border border-slate-800" style="border-radius: 4px;">
+                    <span class="text-[8.5px] text-slate-400 block leading-tight">Interaction</span>
+                    <strong class="text-purple-300 text-[11px] font-semibold">B1</strong>
                   </div>
                 </div>
               </div>
@@ -989,36 +1049,36 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-2.5" style="width:32px;height:32px;background:rgba(245,158,11,0.2);color:#fbbf24;border-radius:8px;">
-                  <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <div class="p-3.5 rounded-lg bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(245,158,11,0.25); border-radius:8px;">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center mb-2.5" style="width:30px;height:30px;background:rgba(245,158,11,0.2);color:#fbbf24;border-radius:6px;">
+                  <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
-                <h4 class="font-semibold text-white text-sm">Strong Work Ethic</h4>
-                <p class="text-xs text-slate-400 mt-1">High personal discipline, commitment to deadlines, and respect for accounting integrity.</p>
+                <h4 class="font-semibold text-white text-xs sm:text-sm">Strong Work Ethic</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-normal">High personal discipline, commitment to deadlines, and respect for accounting integrity.</p>
               </div>
 
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-2.5" style="width:32px;height:32px;background:rgba(16,185,129,0.2);color:#34d399;border-radius:8px;">
-                  <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              <div class="p-3.5 rounded-lg bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(16,185,129,0.25); border-radius:8px;">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center mb-2.5" style="width:30px;height:30px;background:rgba(16,185,129,0.2);color:#34d399;border-radius:6px;">
+                  <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                 </div>
-                <h4 class="font-semibold text-white text-sm">Team Harmony</h4>
-                <p class="text-xs text-slate-400 mt-1">Ability to collaborate seamlessly with colleagues, department heads, and external stakeholders.</p>
+                <h4 class="font-semibold text-white text-xs sm:text-sm">Team Harmony</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-normal">Ability to collaborate seamlessly with colleagues, department heads, and external stakeholders.</p>
               </div>
 
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-2.5" style="width:32px;height:32px;background:rgba(56,189,248,0.2);color:#38bdf8;border-radius:8px;">
-                  <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+              <div class="p-3.5 rounded-lg bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(56,189,248,0.25); border-radius:8px;">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center mb-2.5" style="width:30px;height:30px;background:rgba(56,189,248,0.2);color:#38bdf8;border-radius:6px;">
+                  <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                 </div>
-                <h4 class="font-semibold text-white text-sm">Communication Skills</h4>
-                <p class="text-xs text-slate-400 mt-1">Clear, professional written and verbal communication across English, Malayalam, and Hindi.</p>
+                <h4 class="font-semibold text-white text-xs sm:text-sm">Communication Skills</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-normal">Clear, professional written and verbal communication across English, Malayalam, and Hindi.</p>
               </div>
 
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:12px;">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-2.5" style="width:32px;height:32px;background:rgba(124,58,237,0.2);color:#c084fc;border-radius:8px;">
-                  <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+              <div class="p-3.5 rounded-lg bg-slate-900 border border-slate-800" style="background:rgba(15,23,42,0.6); border:1px solid rgba(124,58,237,0.25); border-radius:8px;">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center mb-2.5" style="width:30px;height:30px;background:rgba(124,58,237,0.2);color:#c084fc;border-radius:6px;">
+                  <svg style="width:15px;height:15px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                 </div>
-                <h4 class="font-semibold text-white text-sm">Attention to Detail</h4>
-                <p class="text-xs text-slate-400 mt-1">Vigilant verification of numerical records, invoice figures, and statutory compliance details.</p>
+                <h4 class="font-semibold text-white text-xs sm:text-sm">Attention to Detail</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-normal">Vigilant verification of numerical records, invoice figures, and statutory compliance details.</p>
               </div>
 
             </div>

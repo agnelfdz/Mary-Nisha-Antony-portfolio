@@ -404,32 +404,84 @@
   }
 
   /* ----------------------------------------------------
-   * 9. Subtle Glowing Cursor Follower
+   * 9. Precision Interactive Cursor Point & Ring Follower
    * ---------------------------------------------------- */
   function initCursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const cursorDot = document.getElementById('cursor-glow');
-    if (!cursorDot) return;
+    const point = document.getElementById('cursor-point');
+    const ring = document.getElementById('cursor-ring');
+    const glow = document.getElementById('cursor-glow');
+    if (!point && !ring && !glow) return;
 
     let mouseX = -100, mouseY = -100;
-    let currentX = -100, currentY = -100;
+    let ringX = -100, ringY = -100;
+    let glowX = -100, glowY = -100;
+    let isVisible = false;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      cursorDot.style.opacity = '1';
+
+      if (!isVisible) {
+        isVisible = true;
+        if (point) point.style.opacity = '1';
+        if (ring) ring.style.opacity = '1';
+        if (glow) glow.style.opacity = '1';
+      }
+
+      if (point) {
+        point.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      }
+
+      document.body.style.setProperty('--cursor-x', `${mouseX}px`);
+      document.body.style.setProperty('--cursor-y', `${mouseY}px`);
     }, { passive: true });
 
-    window.addEventListener('mouseleave', () => {
-      cursorDot.style.opacity = '0';
+    document.addEventListener('mouseleave', () => {
+      isVisible = false;
+      if (point) point.style.opacity = '0';
+      if (ring) ring.style.opacity = '0';
+      if (glow) glow.style.opacity = '0';
+      document.body.classList.remove('cursor-hover');
     });
 
+    document.addEventListener('mouseenter', () => {
+      if (point) point.style.opacity = '1';
+      if (ring) ring.style.opacity = '1';
+      if (glow) glow.style.opacity = '1';
+    });
+
+    // Dynamic hover reaction on all interactive elements
+    const interactiveSelector = 'a, button, input, select, textarea, [role="button"], .glass-card, .btn-primary, .btn-secondary, .btn-gold, .nav-link, .interactive-chip, .tab-btn, .mobile-nav-link';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+        document.body.classList.add('cursor-hover');
+      }
+    }, { passive: true });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+        document.body.classList.remove('cursor-hover');
+      }
+    }, { passive: true });
+
     function loop() {
-      currentX += (mouseX - currentX) * 0.18;
-      currentY += (mouseY - currentY) * 0.18;
-      cursorDot.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      // Lerp ring with fluid physics
+      ringX += (mouseX - ringX) * 0.22;
+      ringY += (mouseY - ringY) * 0.22;
+      if (ring) {
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
+
+      // Lerp ambient glow halo
+      glowX += (mouseX - glowX) * 0.12;
+      glowY += (mouseY - glowY) * 0.12;
+      if (glow) {
+        glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
+      }
+
       requestAnimationFrame(loop);
     }
     loop();
