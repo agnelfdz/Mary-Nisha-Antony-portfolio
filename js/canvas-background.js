@@ -122,7 +122,13 @@
         // Top specular reflection highlight
         ctx.beginPath();
         ctx.roundRect(-w / 2 + 2, -h / 2 + 1, w - 4, 1.5, 1);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fill();
+
+        // 3D Extruded bottom shelf edge
+        ctx.beginPath();
+        ctx.roundRect(-w / 2 + 1, h / 2 - 2.5, w - 2, 2, [0, 0, r, r]);
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.65)';
         ctx.fill();
 
         // Icon Pill on Left with soft glow
