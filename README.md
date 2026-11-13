@@ -10,7 +10,7 @@ A modern digital portfolio website designed and developed for **Mary Nisha Anton
 1. **Resume Analysis & Authentic Data**:
    - **Full Name**: Mary Nisha Antony
    - **Professional Title**: Accounts Professional
-   - **Current Experience**: Fedserv – Accounts Department (1 Year – Present, Currently Working)
+   - **Current Experience**: Fedserv – Accounts Department (2 Years – Present, Currently Working)
    - **Academic Credentials**:
      - **Master of Arts (Economics)** – Indira Gandhi National Open University (IGNOU), Ernakulam [2020 – 2022]
      - **Bachelor of Arts (Economics)** – St. Albert's College Autonomous, Ernakulam [2017 – 2020]
@@ -35,7 +35,7 @@ A modern digital portfolio website designed and developed for **Mary Nisha Anton
    - Original extracted profile photo in a glowing multi-ring glass frame.
    - Floating interactive status badges.
    - Animated professional headline: *“Turning Numbers into Meaningful Financial Insights.”*
-   - Interactive Quick Stats: 1+ Year at Fedserv, 100% Audit Accuracy, 2 Economics Degrees, 3 Languages.
+   - Interactive Quick Stats: 2+ Years at Fedserv, 100% Audit Accuracy, 2 Economics Degrees, 3 Languages.
    - One-click actions: "Explore Portfolio", "Download Resume", and "Quick View" modal.
 
 4. **Technical Skills & Software Hub**:
