@@ -1199,11 +1199,23 @@ body.cursor-hover #cursor-ring {
   box-shadow: 0 6px 0 rgba(120, 53, 15, 0.8), inset 0 2px 0 rgba(253, 224, 71, 0.5), 0 20px 45px -8px rgba(0, 0, 0, 0.85), 0 0 32px var(--tally-amber-glow);
 }
 
-/* Stats Counter Card - 3D Elevated Metric Blocks */
+/* Stats Counter Card - 3D Elevated Metric Blocks with Distinct Spacing */
+#hero-stats-row {
+  margin-top: 4.5rem !important;
+  padding-top: 2.5rem !important;
+  gap: 1.75rem !important;
+}
+
+@media (min-width: 1024px) {
+  #hero-stats-row {
+    gap: 2rem !important;
+  }
+}
+
 .stats-counter-card {
   --glare-x: 50%;
   --glare-y: 50%;
-  padding: 1.25rem;
+  padding: 1.45rem 1.25rem;
   border-radius: 1.25rem;
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.92) 100%);
   backdrop-filter: blur(20px);
