@@ -579,6 +579,85 @@ body.cursor-hover #cursor-ring {
   transform: translateY(-2px);
 }
 
+/* Perfect Beveled Rectangle Columns for CEFR Competencies */
+.beveled-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.35rem 0.25rem;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.75);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.35), 0 2px 5px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+@media (min-width: 640px) {
+  .beveled-col {
+    flex-direction: row;
+    gap: 0.35rem;
+    padding: 0.32rem 0.45rem;
+    min-height: auto;
+  }
+}
+
+.beveled-col:hover {
+  transform: translateY(-1.5px);
+  filter: brightness(1.15);
+}
+
+.beveled-col-sky {
+  border-color: rgba(56, 189, 248, 0.3);
+  border-top: 1.5px solid rgba(125, 211, 252, 0.55);
+  border-left: 1px solid rgba(56, 189, 248, 0.35);
+  border-bottom: 2px solid rgba(12, 74, 110, 0.85);
+  border-right: 1px solid rgba(12, 74, 110, 0.6);
+  box-shadow: inset 1px 1px 0 rgba(56, 189, 248, 0.2), inset -1px -1px 0 rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.beveled-col-sky:hover {
+  border-color: rgba(56, 189, 248, 0.65);
+  border-top-color: #7dd3fc;
+  box-shadow: inset 1px 1px 0 rgba(56, 189, 248, 0.35), 0 0 12px rgba(56, 189, 248, 0.28);
+}
+
+.beveled-col-purple {
+  border-color: rgba(192, 132, 252, 0.3);
+  border-top: 1.5px solid rgba(216, 180, 254, 0.55);
+  border-left: 1px solid rgba(192, 132, 252, 0.35);
+  border-bottom: 2px solid rgba(88, 28, 135, 0.85);
+  border-right: 1px solid rgba(88, 28, 135, 0.6);
+  box-shadow: inset 1px 1px 0 rgba(192, 132, 252, 0.2), inset -1px -1px 0 rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.beveled-col-purple:hover {
+  border-color: rgba(192, 132, 252, 0.65);
+  border-top-color: #d8b4fe;
+  box-shadow: inset 1px 1px 0 rgba(192, 132, 252, 0.35), 0 0 12px rgba(192, 132, 252, 0.28);
+}
+
+.beveled-col-label {
+  font-size: 10px;
+  color: #cbd5e1;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.beveled-col-score {
+  font-size: 10.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 /* Glassmorphism Cards */
 .glass-card {
   background: var(--glass-bg);
